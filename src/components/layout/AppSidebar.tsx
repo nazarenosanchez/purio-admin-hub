@@ -50,63 +50,82 @@ export function AppSidebar() {
 
   return (
     <Sidebar collapsible="icon">
-      <SidebarHeader className="border-b border-sidebar-border px-4 py-5">
-        <div className="flex items-center gap-3">
+      <SidebarHeader className="border-b border-sidebar-border px-5 py-6">
+        <div className="flex items-center justify-center">
           <img
             src={logoPurio}
             alt="Purio Travel"
-            className="h-9 w-auto shrink-0 brightness-0 invert"
+            className="h-14 w-auto"
           />
-          {!collapsed && (
-            <span className="text-xs text-sidebar-foreground/60">
-              Panel Admin
-            </span>
-          )}
         </div>
       </SidebarHeader>
 
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Principal</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-xs uppercase tracking-wider text-sidebar-foreground/50 px-3 mb-2">
+            Principal
+          </SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu>
-              {mainItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <NavLink
-                      to={item.url}
-                      end={item.url === "/"}
-                      className="hover:bg-sidebar-accent"
-                      activeClassName="bg-sidebar-accent text-sidebar-primary font-medium"
-                    >
-                      <item.icon className="mr-2 h-4 w-4" />
-                      {!collapsed && <span>{item.title}</span>}
-                    </NavLink>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
+            <SidebarMenu className="space-y-1">
+              {mainItems.map((item) => {
+                const isActive = location.pathname === item.url || (item.url !== "/" && location.pathname.startsWith(item.url));
+                return (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton asChild>
+                      <NavLink
+                        to={item.url}
+                        end={item.url === "/"}
+                        className={`
+                          relative flex items-center gap-3 px-3 py-2.5 rounded-lg
+                          transition-all duration-200
+                          hover:bg-sidebar-accent
+                          ${isActive ? 'bg-sidebar-primary text-sidebar-primary-foreground font-semibold shadow-sm' : 'text-sidebar-foreground'}
+                        `}
+                      >
+                        {isActive && (
+                          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-white rounded-r-full" />
+                        )}
+                        <item.icon className="h-4 w-4" strokeWidth={isActive ? 2.5 : 2} />
+                        {!collapsed && <span className="text-sm">{item.title}</span>}
+                      </NavLink>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
 
         <SidebarGroup>
-          <SidebarGroupLabel>Gestión</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-xs uppercase tracking-wider text-sidebar-foreground/50 px-3 mb-2">
+            Gestión
+          </SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu>
-              {configItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <NavLink
-                      to={item.url}
-                      className="hover:bg-sidebar-accent"
-                      activeClassName="bg-sidebar-accent text-sidebar-primary font-medium"
-                    >
-                      <item.icon className="mr-2 h-4 w-4" />
-                      {!collapsed && <span>{item.title}</span>}
-                    </NavLink>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
+            <SidebarMenu className="space-y-1">
+              {configItems.map((item) => {
+                const isActive = location.pathname === item.url;
+                return (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton asChild>
+                      <NavLink
+                        to={item.url}
+                        className={`
+                          relative flex items-center gap-3 px-3 py-2.5 rounded-lg
+                          transition-all duration-200
+                          hover:bg-sidebar-accent
+                          ${isActive ? 'bg-sidebar-primary text-sidebar-primary-foreground font-semibold shadow-sm' : 'text-sidebar-foreground'}
+                        `}
+                      >
+                        {isActive && (
+                          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-white rounded-r-full" />
+                        )}
+                        <item.icon className="h-4 w-4" strokeWidth={isActive ? 2.5 : 2} />
+                        {!collapsed && <span className="text-sm">{item.title}</span>}
+                      </NavLink>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
@@ -114,13 +133,20 @@ export function AppSidebar() {
 
       <SidebarFooter className="border-t border-sidebar-border p-4">
         {!collapsed && (
-          <div className="flex items-center gap-3">
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-sidebar-accent text-xs font-medium text-sidebar-accent-foreground">
+          <div className="flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-sidebar-accent/50 transition-colors duration-200 cursor-pointer">
+            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-sidebar-primary to-sidebar-primary/80 text-xs font-semibold text-sidebar-primary-foreground shadow-sm">
               AM
             </div>
-            <div className="flex flex-col">
-              <span className="text-xs font-medium text-sidebar-foreground">Admin Master</span>
-              <span className="text-[10px] text-sidebar-foreground/50">admin@purio.pe</span>
+            <div className="flex flex-col flex-1 min-w-0">
+              <span className="text-sm font-medium text-sidebar-foreground truncate">Admin Master</span>
+              <span className="text-xs text-sidebar-foreground/50 truncate">admin@purio.pe</span>
+            </div>
+          </div>
+        )}
+        {collapsed && (
+          <div className="flex justify-center">
+            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-sidebar-primary to-sidebar-primary/80 text-xs font-semibold text-sidebar-primary-foreground shadow-sm cursor-pointer">
+              AM
             </div>
           </div>
         )}

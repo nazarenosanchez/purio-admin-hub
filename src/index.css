@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,54 +6,78 @@
 
 @layer base {
   :root {
-    --background: 240 20% 97%;
-    --foreground: 241 30% 15%;
+    /* Backgrounds - Blanco limpio */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 9%;
 
+    /* Surfaces */
     --card: 0 0% 100%;
-    --card-foreground: 241 30% 15%;
+    --card-foreground: 0 0% 9%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 241 30% 15%;
+    --popover-foreground: 0 0% 9%;
 
-    --primary: 241 30% 33%;
+    /* Primary - Gris oscuro del logo (principal) */
+    --primary: 0 0% 25%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 240 10% 92%;
-    --secondary-foreground: 241 30% 20%;
+    /* Secondary - Gris neutro */
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 20%;
 
-    --muted: 240 10% 94%;
-    --muted-foreground: 0 0% 45%;
+    /* Muted - Gris suave */
+    --muted: 0 0% 97%;
+    --muted-foreground: 0 0% 40%;
 
-    --accent: 187 100% 42%;
+    /* Accent - Turquesa suave del logo */
+    --accent: 180 65% 55%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 72% 51%;
+    /* Destructive */
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 240 10% 90%;
-    --input: 240 10% 90%;
-    --ring: 241 30% 33%;
+    /* Borders */
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 258 90% 66%;
 
-    --radius: 0.625rem;
+    /* Border Radius - Más redondeado */
+    --radius: 0.75rem;
 
-    --sidebar-background: 241 30% 18%;
-    --sidebar-foreground: 240 10% 85%;
-    --sidebar-primary: 187 100% 42%;
+    /* Sidebar - Blanco con detalles grises */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 20%;
+    --sidebar-primary: 0 0% 25%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 241 25% 25%;
-    --sidebar-accent-foreground: 240 10% 90%;
-    --sidebar-border: 241 25% 25%;
-    --sidebar-ring: 187 100% 42%;
+    --sidebar-accent: 0 0% 96%;
+    --sidebar-accent-foreground: 0 0% 9%;
+    --sidebar-border: 0 0% 92%;
+    --sidebar-ring: 0 0% 25%;
 
-    --success: 152 60% 42%;
+    /* Semantic Colors - Refinados */
+    --success: 142 71% 45%;
     --success-foreground: 0 0% 100%;
     --warning: 38 92% 50%;
     --warning-foreground: 0 0% 100%;
-    --info: 187 100% 42%;
+    --info: 217 91% 60%;
     --info-foreground: 0 0% 100%;
 
-    --font-heading: 'Plus Jakarta Sans', sans-serif;
-    --font-body: 'Inter', sans-serif;
+    /* Typography - Inter para todo */
+    --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+    /* Shadows - Sutiles y elegantes */
+    --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+    /* Colored Shadows */
+    --shadow-primary: 0 4px 14px 0 rgb(168 85 247 / 0.15);
+    --shadow-accent: 0 4px 14px 0 rgb(6 182 212 / 0.15);
+    --shadow-success: 0 4px 14px 0 rgb(34 197 94 / 0.15);
   }
 
   .dark {

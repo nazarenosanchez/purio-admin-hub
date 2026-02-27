@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 import { useLocation } from "react-router-dom";
+import logoPurio from "@/assets/logo-purio.png";
 import {
   Sidebar,
   SidebarContent,
@@ -51,18 +52,15 @@ export function AppSidebar() {
     <Sidebar collapsible="icon">
       <SidebarHeader className="border-b border-sidebar-border px-4 py-5">
         <div className="flex items-center gap-3">
-          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-sidebar-primary font-heading text-sm font-bold text-sidebar-primary-foreground">
-            P
-          </div>
+          <img
+            src={logoPurio}
+            alt="Purio Travel"
+            className="h-9 w-auto shrink-0 brightness-0 invert"
+          />
           {!collapsed && (
-            <div className="flex flex-col">
-              <span className="font-heading text-sm font-bold text-sidebar-primary-foreground">
-                Purio Travel
-              </span>
-              <span className="text-xs text-sidebar-foreground/60">
-                Panel Admin
-              </span>
-            </div>
+            <span className="text-xs text-sidebar-foreground/60">
+              Panel Admin
+            </span>
           )}
         </div>
       </SidebarHeader>

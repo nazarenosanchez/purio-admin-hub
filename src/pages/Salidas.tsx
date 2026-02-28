@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Calendar, MapPin, Users, DollarSign, Clock, Plus, LayoutGrid, CalendarDays } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -89,6 +90,7 @@ const estadoStyles: Record<string, { badge: string; progress: string }> = {
 };
 
 export default function Salidas() {
+  const navigate = useNavigate();
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<'calendar' | 'grid'>('calendar');
 
@@ -134,7 +136,7 @@ export default function Salidas() {
               <LayoutGrid className="h-4 w-4" />
             </Button>
           </div>
-          <Button>
+          <Button onClick={() => navigate('/salidas/nueva')}>
             <Plus className="mr-2 h-4 w-4" />
             Nueva Salida
           </Button>

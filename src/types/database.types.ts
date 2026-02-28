@@ -33,16 +33,30 @@ export interface Tour {
   sedeId: number;
   tourCodigo: string;
   tourNombre: string;
+  tourDescripcion?: string;
   tourDescripcionCorta?: string;
   tourCiudad: string;
   tourPais: string;
   tourDuracion: string;
   tourCapacidadMaxima: number;
   tourCapacidadMinima: number;
+  tourDificultad?: string;
+  tourIdiomasJson?: string;
+  tourPuntoEncuentro?: string;
+  tourIncluye?: string;
+  tourNoIncluye?: string;
+  tourRecomendaciones?: string;
+  tourRequisitos?: string;
+  tourPorcentajeAdelantoMinimo?: number;
+  tourPermitePagoParcial?: boolean;
+  tourMetodosPagoPermitidosJson?: string;
   tourEstado: EstadoTour;
   tourDestacado: boolean;
   tourPrecioBase?: number;
+  tourOrdenVisualizacion?: number;
   createdAt: string;
+  updatedAt?: string;
+  deletedAt?: string;
 }
 
 export interface Reserva {
